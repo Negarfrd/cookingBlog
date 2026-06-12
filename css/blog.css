@@ -1,0 +1,175 @@
+.hero-section {
+    text-align: center;
+    padding: 60px 0;
+}
+
+.hero-section h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.hero-section p {
+    color: #666;
+}
+
+.search-bar {
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 8px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    max-width: 600px;
+    margin: 40px auto 0;
+}
+
+.search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #333;
+}
+
+.search-bar button {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 14px 35px;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-left: 0;
+}
+
+.search-bar button:hover {
+    background: #333;
+}
+
+.blog-container {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+.blog-main {
+    flex: 2;
+}
+
+.sidebar {
+    flex: 1;
+}
+
+.blog-card {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+    align-items: center;
+}
+
+.blog-card img {
+    width: 280px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.blog-content h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.blog-content p {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.blog-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.blog-author img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.blog-author .date {
+    color: #aaa;
+    font-weight: 400;
+    margin-left: 20px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 60px auto 0;
+    width: fit-content;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #000;
+    width: 45px;
+    height: 45px;
+    border: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.pagination a.active {
+    background: #000;
+    color: #fff;
+}
+
+.sidebar h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.sidebar-item {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sidebar-item img {
+    width: 100px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.sidebar-item h4 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.sidebar-item p {
+    font-size: 12px;
+    color: #aaa;
+}
+
+.sidebar-ad {
+    margin-top: 40px;
+}
+
+.sidebar-ad img {
+    width: 100%;
+}
+
