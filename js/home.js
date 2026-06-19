@@ -1,7 +1,6 @@
 document.querySelector(".view-btn").onclick = () => {
     location.href = "recipe.html";
 };
-console.log(document.querySelector(".view-btn"));
 
 const recipeCards = document.querySelectorAll(".recipe-card");
 
