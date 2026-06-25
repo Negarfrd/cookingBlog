@@ -13,3 +13,10 @@ document.querySelectorAll(".nav-links li")[2].onclick = function () {
 document.querySelectorAll(".nav-links li")[3].onclick = function () {
     location.href = "contact.html";
 };
+
+const hamburgerBtn = document.getElementById("hamburgerBtn");
+const navLinks = document.querySelector(".nav-links");
+
+hamburgerBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+});
