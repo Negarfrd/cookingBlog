@@ -1,60 +1,84 @@
+const CARDS_PER_PAGE = 5;
+
 const searchInput = document.querySelector(".search-bar input");
-const blogCards = document.querySelectorAll(".blog-card");
-const pagination = document.querySelector(".pagination");
+const allCards = Array.from(document.querySelectorAll(".blog-card"));
+const paginationEl = document.getElementById("pagination");
 
-searchInput.addEventListener("input", () => {
-    const searchValue = searchInput.value.toUpperCase().trim();
+let currentPage = 1;
+let filteredCards = allCards;
 
-    let visibleCards = 0;
+function hideCard(card) {
+    card.classList.add("hidden");
+}
 
-    blogCards.forEach(card => {
-        const title = card.querySelector("h2").textContent.toUpperCase();
+function showCard(card) {
+    card.classList.remove("hidden");
+}
 
-        if (title.includes(searchValue)) {
-            card.style.display = "flex";
-            visibleCards++;
+function showPagination() {
+    paginationEl.classList.remove("hidden");
+}
+
+function renderPage(page) {
+    const totalPages = Math.ceil(filteredCards.length / CARDS_PER_PAGE);
+    currentPage = Math.max(1, Math.min(page, totalPages));
+
+    const start = (currentPage - 1) * CARDS_PER_PAGE;
+    const end = start + CARDS_PER_PAGE;
+
+    allCards.forEach(card => {
+        const indexInFiltered = filteredCards.indexOf(card);
+        if (indexInFiltered >= start && indexInFiltered < end) {
+            showCard(card);
         } else {
-            card.style.display = "none";
+            hideCard(card);
         }
     });
 
-    if (visibleCards < blogCards.length) {
-        pagination.style.display = "none";
-    } else {
-        pagination.style.display = "flex";
-    }
-});
-const pageButtons = document.querySelectorAll(".pagination a");
-
-const orders = [[0, 1, 2, 3, 4, 5], [5, 4, 3, 2, 1, 0]];
-
-function showPage(pageIndex) {
-
-    const container = document.querySelector(".blog-main");
-
-    blogCards.forEach(card => card.remove());
-
-    orders[pageIndex].forEach(index => {
-        container.insertBefore(blogCards[index], document.querySelector(".pagination"));
-    });
-
-    pageButtons.forEach(btn => btn.classList.remove("active"));
-    pageButtons[pageIndex].classList.add("active");
+    buildPaginationButtons(totalPages);
 }
 
-pageButtons.forEach((btn, index) => {
+function buildPaginationButtons(totalPages) {
+    paginationEl.innerHTML = "";
 
-    if (index < 2) {
-        btn.addEventListener("click", (e) => {
+    showPagination();
+
+    for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement("a");
+        btn.href        = "#";
+        btn.textContent = i;
+        if (i === currentPage) btn.classList.add("active");
+
+        btn.addEventListener("click", e => {
             e.preventDefault();
-            showPage(index);
+            renderPage(i);
         });
+
+        paginationEl.appendChild(btn);
     }
 
+    const arrow = document.createElement("a");
+    arrow.href = "#";
+    arrow.innerHTML = `<img src="../assets/images/Vector 8.svg">`;
+    arrow.addEventListener("click", e => {
+        e.preventDefault();
+        if (currentPage < totalPages) renderPage(currentPage + 1);
+    });
+    paginationEl.appendChild(arrow);
+}
+
+searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toUpperCase().trim();
+
+    filteredCards = allCards.filter(card => card.querySelector("h2").textContent.toUpperCase().includes(query));
+
+    renderPage(1);
 });
 
-blogCards.forEach(card => {
+allCards.forEach(card => {
     card.addEventListener("click", () => {
         window.location.href = "blogpost.html";
     });
 });
+
+renderPage(1);

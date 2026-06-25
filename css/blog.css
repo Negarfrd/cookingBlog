@@ -173,3 +173,10 @@
     width: 100%;
 }
 
+.blog-card.hidden {
+    display: none;
+}
+
+.pagination.hidden {
+    display: none;
+}
