@@ -171,3 +171,18 @@
     display: block;
     margin-top: 10px;
 }
+
+@media (max-width: 1000px) {
+    .contact-form {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .contact-form {
+        flex-direction: column;
+    }
+
+    .contact-btn {
+        width: 100%;
+    }
+}
