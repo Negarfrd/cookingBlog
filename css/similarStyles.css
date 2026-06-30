@@ -224,6 +224,7 @@
 
     .nav-links.open {
         display: flex;
+        flex-direction: column;
     }
     .hamburger {
         display: block;
